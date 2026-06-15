@@ -4,12 +4,7 @@ import { Github, Linkedin, Mail, ArrowRight, Download, Code, Cpu, Cloud, Databas
 import { cn } from '@/src/lib/utils';
 
 const handleResumeDownload = () => {
-  const link = document.createElement('a');
-  link.href = '/public/jj (16).pdf'; // Make sure resume.pdf exists in public folder
-  link.download = 'Pooja_K_Resume.pdf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  window.open('https://drive.google.com/file/d/1ja-JF0t4FFGG6OtPrhFLySlGoMsk9qrz/view?usp=drive_link', '_blank');
 };
 
 const FloatingIcon = ({ icon: Icon, className, delay = 0 }) => (
