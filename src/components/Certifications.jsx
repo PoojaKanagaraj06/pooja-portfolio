@@ -1,7 +1,15 @@
 import { motion } from 'motion/react';
-import { ShieldCheck, Cloud, Database, Code } from 'lucide-react';
+import { ShieldCheck, Cloud, Database, Code, Award, ExternalLink } from 'lucide-react';
 
 const certifications = [
+  {
+    title: 'Microsoft Certified AZ900',
+    issuer: 'Microsoft Azure',
+    description: 'Azure Fundamentals Certification.',
+    icon: ShieldCheck,
+    color: 'text-blue-500',
+    link: 'https://www.credly.com/users/pooja-pooja.923f8c1b/badges#credly'
+  },
   {
     title: 'Google Cloud Arcade',
     issuer: 'Google Cloud',
@@ -29,6 +37,15 @@ const certifications = [
     description: 'Comprehensive certification covering modern web development technologies.',
     icon: Code,
     color: 'text-purple-400'
+  },
+  {
+    title: 'More Certifications',
+    issuer: 'Credly Profile',
+    description: 'Visit my Credly profile to see all my certifications and digital badges.',
+    icon: Award,
+    color: 'text-yellow-500',
+    link: 'https://www.credly.com/users/pooja-pooja.923f8c1b/badges#credly',
+    isExternal: true
   }
 ];
 
@@ -58,12 +75,19 @@ export default function Certifications() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-6 rounded-2xl glass hover:bg-white/10 transition-all border-white/5 group"
+              as={cert.link ? 'a' : 'div'}
+              href={cert.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`p-6 rounded-2xl glass hover:bg-white/10 transition-all border-white/5 group ${cert.link ? 'cursor-pointer' : ''}`}
             >
               <div className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform ${cert.color}`}>
                 <cert.icon className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold mb-1 text-slate-900 dark:text-white">{cert.title}</h3>
+              <h3 className="text-lg font-bold mb-1 text-slate-900 dark:text-white flex items-center gap-2">
+                {cert.title}
+                {cert.link && <ExternalLink className="w-4 h-4" />}
+              </h3>
               <p className="text-emerald-500 text-xs font-bold mb-3 uppercase tracking-widest">{cert.issuer}</p>
               <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
                 {cert.description}
