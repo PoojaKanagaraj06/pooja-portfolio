@@ -5,7 +5,7 @@ import { cn } from '@/src/lib/utils';
 
 const handleResumeDownload = () => {
   const link = document.createElement('a');
-  link.href = '/jj(16).pdf'; // Make sure resume.pdf exists in public folder
+  link.href = '/public/jj (16).pdf'; // Make sure resume.pdf exists in public folder
   link.download = 'Pooja_K_Resume.pdf';
   document.body.appendChild(link);
   link.click();
