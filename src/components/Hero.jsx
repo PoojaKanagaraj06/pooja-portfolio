@@ -3,6 +3,15 @@ import { Typewriter } from 'react-simple-typewriter';
 import { Github, Linkedin, Mail, ArrowRight, Download, Code, Cpu, Cloud, Database } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 
+const handleResumeDownload = () => {
+  const link = document.createElement('a');
+  link.href = '/jj(16).pdf'; // Make sure resume.pdf exists in public folder
+  link.download = 'Pooja_K_Resume.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 const FloatingIcon = ({ icon: Icon, className, delay = 0 }) => (
   <motion.div
     initial={{ opacity: 0 }}
@@ -99,7 +108,8 @@ export default function Hero() {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <button
-              className="px-8 py-4 rounded-xl glass hover:bg-black/5 dark:hover:bg-white/10 transition-all flex items-center gap-2 font-bold text-slate-900 dark:text-white"
+              onClick={handleResumeDownload}
+              className="px-8 py-4 rounded-xl glass hover:bg-black/5 dark:hover:bg-white/10 transition-all flex items-center gap-2 font-bold text-slate-900 dark:text-white cursor-pointer"
             >
               Download Resume
               <Download className="w-5 h-5" />
